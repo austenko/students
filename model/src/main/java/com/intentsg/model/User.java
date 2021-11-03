@@ -23,7 +23,7 @@ public class User {
     @Column(name = "FIRST_NAME", nullable = false)
     private String firstName;
 
-    @OneToMany
+    @OneToMany(mappedBy = "user", fetch = FetchType.LAZY,cascade = CascadeType.ALL)
     @JsonIgnore
     private List<Ticket> ticket;
 

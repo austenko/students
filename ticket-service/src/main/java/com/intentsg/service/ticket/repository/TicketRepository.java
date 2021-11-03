@@ -11,5 +11,5 @@ import java.util.List;
 @Repository
 public interface TicketRepository extends JpaRepository<Ticket, Long> {
     @Query("SELECT t FROM Ticket t WHERE t.description = :string OR t.title = :string OR t.time = :string")
-    List<Ticket> findByString(@Param("string") String text);
+    List<Ticket> findByAllFieldRealization(@Param("string") String text);
 }

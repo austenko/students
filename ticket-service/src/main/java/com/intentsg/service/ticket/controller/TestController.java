@@ -15,19 +15,14 @@ public class TestController {
 	@Autowired
 	private TicketService ticketService;
 
-	@GetMapping("/test")
-	public String test() {
-		return "test";
-	}
-
-	@GetMapping("/findAll")
-	public List<TicketDTO> findAll() {
-		return ticketService.getTicketsList();
+	@GetMapping("/findAll/{page}")
+	public List<TicketDTO> findAll(@PathVariable int page) {
+		return ticketService.getTicketsList(page);
 	}
 
 	@GetMapping("/{id}")
-	public TicketDTO findOne(@PathVariable Long id){
-		return ticketService.getOne(id);
+	public TicketDTO findById(@PathVariable Long id){
+		return ticketService.findById(id);
 	}
 
 	@PostMapping("/saveTicket")
@@ -40,7 +35,7 @@ public class TestController {
 	}
 
 	@GetMapping("/getByString")
-	public List<Ticket> getByString(@RequestParam String text){
-		return ticketService.findByString(text);
+	public List<TicketDTO> getByString(@RequestParam String text){
+		return ticketService.findByAllField(text);
 	}
 }

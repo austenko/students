@@ -1,14 +1,16 @@
 package com.intentsg.model;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
+import javax.persistence.*;
 
 @Entity
 @Table(name = "TICKETS")
+@Getter
+@Setter
+@NoArgsConstructor
 public class Ticket {
 
     @Id
@@ -19,19 +21,12 @@ public class Ticket {
     @Column(name = "TITLE", nullable = false)
     private String title;
 
-    public Long getTicketId() {
-        return ticketId;
-    }
+    @Column(name = "DESCRIPTION", nullable = false)
+    private String description;
 
-    public void setTicketId(Long ticketId) {
-        this.ticketId = ticketId;
-    }
+    @Column(name = "TIME", nullable = false)
+    private String time;
 
-    public String getTitle() {
-        return title;
-    }
-
-    public void setTitle(String title) {
-        this.title = title;
-    }
+    @ManyToOne
+    private User user;
 }

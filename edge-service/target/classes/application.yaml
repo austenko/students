@@ -1,18 +1,9 @@
 server:
-  port: ${PORT:8080}
+  port: ${PORT:8765}
 
 spring:
   application:
-    name: user-service
-  datasource:
-    username: root
-    password: root
-    url: jdbc:mysql://localhost:3306/students_ll5?characterEncoding=utf8&createDatabaseIfNotExist=true&serverTimezone=UTC
-  jpa:
-    hibernate:
-      ddl-auto: update
-    database-platform: org.hibernate.dialect.MySQL8Dialect
-    show-sql: true
+    name: edge-service
 
 eureka:
   instance:
@@ -23,3 +14,17 @@ eureka:
     initialInstanceInfoReplicationIntervalSeconds: 5
     serviceUrl:
       defaultZone: http://${EUREKA_CLIENT_SERVICE_URL_HOSTNAME:localhost}:${EUREKA_CLIENT_SERVICE_URL_PORT:8761}/eureka/
+
+zuul:
+  ignoredServices: '*'
+  prefix: /api
+  sensitiveHeaders:
+  routes:
+    user-service:
+      path: /users/**
+      serviceId: user-service
+      stripPrefix: false
+    ticket-service:
+      path: /tickets/**
+      serviceId: ticket-service
+      stripPrefix: false

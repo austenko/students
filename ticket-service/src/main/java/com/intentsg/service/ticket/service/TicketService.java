@@ -4,7 +4,11 @@ import com.intentsg.model.Ticket;
 import com.intentsg.service.ticket.dto.TicketDTO;
 import com.intentsg.service.ticket.repository.TicketRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
+import org.springframework.data.repository.PagingAndSortingRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -25,8 +29,8 @@ public class TicketService {
         return replaceToTicketDTO(ticket);
     }
 
-    public List<TicketDTO> getTicketsList(int pageSize){
-        return ticketRepository.findAll(PageRequest.of(pageSize,11)).stream()
+    public List<TicketDTO> getTicketsList(Pageable pageable){
+        return ticketRepository.findAll(pageable).stream()
                 .map(this::replaceToTicketDTO)
                 .collect(Collectors.toList());
     }

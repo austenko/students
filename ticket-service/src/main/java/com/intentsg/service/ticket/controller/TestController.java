@@ -4,8 +4,11 @@ import com.intentsg.model.Ticket;
 import com.intentsg.service.ticket.dto.TicketDTO;
 import com.intentsg.service.ticket.service.TicketService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.constraints.NotNull;
 import java.util.List;
 
 @RestController
@@ -15,9 +18,9 @@ public class TestController {
 	@Autowired
 	private TicketService ticketService;
 
-	@GetMapping("/findAll/{page}")
-	public List<TicketDTO> findAll(@PathVariable int page) {
-		return ticketService.getTicketsList(page);
+	@GetMapping("/findAll")
+	public List<TicketDTO> findAll(@NotNull final Pageable pageable) {
+		return ticketService.getTicketsList(pageable);
 	}
 
 	@GetMapping("/{id}")

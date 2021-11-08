@@ -1,17 +1,17 @@
 server:
-  port: ${PORT:8081}
+  port: ${PORT:8080}
 
 spring:
   application:
-    name: ticket-service
+    name: user-service
   datasource:
     username: root
-    password: Mysqlserver
-    url: jdbc:mysql://localhost:3306/tickets1?characterEncoding=utf8&createDatabaseIfNotExist=true
+    password: root
+    url: jdbc:mysql://localhost:3306/students_ll5?characterEncoding=utf8&createDatabaseIfNotExist=true
   jpa:
     hibernate:
       ddl-auto: update
-    show-sql: true
+    show-sql: false
 
 eureka:
   instance:

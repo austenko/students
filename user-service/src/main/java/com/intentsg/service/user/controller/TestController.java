@@ -49,7 +49,7 @@ public class TestController {
 	@RequestMapping(value="/user",method = RequestMethod.POST)
 	public ResponseEntity createUser(@RequestBody User user)	{
 		userService.createUsr(user);
-		return new ResponseEntity<>("User is created successfully with id= " + user.getUserId(), HttpStatus.CREATED);
+		return new ResponseEntity<>("User was created successfully with id= " + user.getUserId(), HttpStatus.CREATED);
 	}
 
 	@RequestMapping(value="/user/{id}",method = RequestMethod.DELETE)

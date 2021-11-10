@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <bytecodeTargetLevel>
+      <module name="discovery-service" target="1.8" />
+      <module name="edge-service" target="1.8" />
+      <module name="model" target="1.8" />
+      <module name="pridumayte-chtoto" target="1.8" />
+      <module name="ticket-service" target="1.8" />
+      <module name="user-service" target="1.8" />
+    </bytecodeTargetLevel>
+  </component>
+</project>

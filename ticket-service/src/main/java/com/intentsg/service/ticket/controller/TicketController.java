@@ -17,7 +17,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/tickets")
 @Api(value = "tickets")
-public class TestController {
+public class TicketController {
 
 	@Autowired
 	private TicketService ticketService;
@@ -42,19 +42,15 @@ public class TestController {
 		return ticketService.findById(id);
 	}
 
-	@PostMapping("/saveTicket")
-	@ApiOperation(value = "saveTicket")
-	public void saveTicket(@RequestParam String title, String description, String time){
-		Ticket ticket = new Ticket();
-		ticket.setDescription(description);
-		ticket.setTime(time);
-		ticket.setTitle(title);
-		ticketService.saveTicket(ticket);
-	}
-
 	@GetMapping("/getByString")
 	@ApiOperation(value = "getByString", response = TicketDTO.class)
 	public List<TicketDTO> getByString(@RequestParam String text){
 		return ticketService.findByAllField(text);
+	}
+
+	@PostMapping("/saveTicket")
+	@ApiOperation(value = "saveTicket")
+	public void saveTicket(@RequestBody Ticket ticket){
+		ticketService.saveTicket(ticket);
 	}
 }

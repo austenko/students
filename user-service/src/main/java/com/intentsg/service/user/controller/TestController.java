@@ -17,7 +17,7 @@ import java.util.stream.Collectors;
 
 
 @Controller
-@RequestMapping("/api")
+@RequestMapping("/users")
 public class TestController {
 
 	@Autowired

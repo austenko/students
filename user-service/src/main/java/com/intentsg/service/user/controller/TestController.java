@@ -57,4 +57,10 @@ public class TestController {
 		userService.deleteUsrById(id);
 		return new ResponseEntity<>("User with id= " + id + " successfully deleted", HttpStatus.OK);
 	}
+
+	@PutMapping("/user")
+	public ResponseEntity updateUserAnyFieldById(@RequestBody User user)	{
+		userService.updateUserAnyFieldByIdByReposytoryInBoxMethod(user);
+		return new ResponseEntity<>("User with id = " + user.getUserId() + " successfully updated", HttpStatus.OK);
+	}
 }

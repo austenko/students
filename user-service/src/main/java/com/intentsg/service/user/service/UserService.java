@@ -47,11 +47,37 @@ public class UserService {
         return userDTO;
     }
 
+    User autoCompleteFields(User userSourse,User userOrigin){
+        if(userSourse.getFirstName()!=null) {
+            userOrigin.setFirstName(userSourse.getFirstName());
+        }
+
+        if(userSourse.getLastName()!=null){
+            userOrigin.setLastName(userSourse.getLastName());
+        }
+
+        if(userSourse.getAlias()!=null){
+            userOrigin.setAlias(userSourse.getAlias());
+        }
+        return userOrigin;
+    }
+
+    @Transactional
+    public void updateUserAnyFieldByIdByReposytoryInBoxMethod(User userSourse){
+        User userOrigin = userRepository.findUserByUserId(userSourse.getUserId());
+
+        userOrigin= autoCompleteFields(userSourse,userOrigin);
+
+        userRepository.save(userOrigin);
+    }
+
     public void createUsr(User user){
         userRepository.save(user);
+
     }
 
     public void deleteUsrById(long id){
         userRepository.deleteByUserId(id);
+
     }
 }

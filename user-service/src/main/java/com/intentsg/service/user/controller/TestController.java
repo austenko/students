@@ -60,7 +60,7 @@ public class TestController {
 
 	@PutMapping("/user")
 	public ResponseEntity updateUserAnyFieldById(@RequestBody User user)	{
-		userService.updateUserAnyFieldByIdByReposytoryInBoxMethod(user);
+		userService.updateUserAnyFieldByIdByNativeQuery(user);
 		return new ResponseEntity<>("User with id = " + user.getUserId() + " successfully updated", HttpStatus.OK);
 	}
 }

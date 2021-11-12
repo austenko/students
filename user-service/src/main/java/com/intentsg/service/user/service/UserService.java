@@ -71,6 +71,17 @@ public class UserService {
         userRepository.save(userOrigin);
     }
 
+
+    @Transactional
+    public void updateUserAnyFieldByIdByNativeQuery(User userSourse){
+        User userOrigin = userRepository.findUserByUserId(userSourse.getUserId());
+        long id= userSourse.getUserId();
+
+        userOrigin= autoCompleteFields(userSourse,userOrigin);
+
+        userRepository.updateUserAnyFieldById(userOrigin.getFirstName(),userOrigin.getLastName(),userOrigin.getAlias(),id);
+    }
+
     public void createUsr(User user){
         userRepository.save(user);
 

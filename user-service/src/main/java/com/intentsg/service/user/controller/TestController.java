@@ -7,6 +7,9 @@ import com.intentsg.service.user.repository.UserRepository;
 import com.intentsg.service.user.service.UserService;
 import io.swagger.v3.oas.annotations.parameters.RequestBody;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -31,8 +34,8 @@ public class TestController {
 
 	@GetMapping("/list")
 	public ResponseEntity<List<UserDTO>> list()	{
-		return ResponseEntity.ok(userService.getAllUserList());
-
+		Pageable sortedUserByAlias = PageRequest.of(0, 10, Sort.by("alias"));
+		return ResponseEntity.ok(userService.getAllUserList(sortedUserByAlias));
 	}
 
 	@RequestMapping(value="/list/{lastName}",method = RequestMethod.GET)
@@ -60,7 +63,7 @@ public class TestController {
 
 	@PutMapping("/user")
 	public ResponseEntity updateUserAnyFieldById(@RequestBody User user)	{
-		userService.updateUserAnyFieldByIdByNativeQuery(user);
+		userService.updateUserAnyFieldByIdByRepositoryInBoxMethod(user);
 		return new ResponseEntity<>("User with id = " + user.getUserId() + " successfully updated", HttpStatus.OK);
 	}
 }

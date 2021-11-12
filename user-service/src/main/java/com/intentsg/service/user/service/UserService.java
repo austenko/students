@@ -4,6 +4,7 @@ import com.intentsg.model.User;
 import com.intentsg.service.user.dto.UserDTO;
 import com.intentsg.service.user.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -17,8 +18,8 @@ public class UserService {
     @Autowired
     private UserRepository userRepository;
 
-    public List<UserDTO> getAllUserList(){
-        List<UserDTO> userDTOs =userRepository.findAll().stream()
+    public List<UserDTO> getAllUserList(Pageable sortedUserByAlias){
+        List<UserDTO> userDTOs =userRepository.findAll(sortedUserByAlias).stream()
                 .map(e->{
                     UserDTO userDTO=new UserDTO();
                     userDTO.setUserDTO(e.getAlias());
@@ -63,7 +64,7 @@ public class UserService {
     }
 
     @Transactional
-    public void updateUserAnyFieldByIdByReposytoryInBoxMethod(User userSourse){
+    public void updateUserAnyFieldByIdByRepositoryInBoxMethod(User userSourse){
         User userOrigin = userRepository.findUserByUserId(userSourse.getUserId());
 
         userOrigin= autoCompleteFields(userSourse,userOrigin);

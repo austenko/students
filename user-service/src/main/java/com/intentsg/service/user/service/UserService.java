@@ -21,7 +21,8 @@ public class UserService {
         List<UserDTO> userDTOs =userRepository.findAll().stream()
                 .map(e->{
                     UserDTO userDTO=new UserDTO();
-                    userDTO.setName(e.getAlias());
+                    userDTO.setUserDTO(e.getAlias());
+                    userDTO.setUserDTOId(e.getUserId());
                     return userDTO;
                 }).collect(Collectors.toList());
         return userDTOs;
@@ -31,7 +32,8 @@ public class UserService {
         List<UserDTO> userDTOs =userRepository.findByLastName(name).stream()
                 .map(e->{
                     UserDTO userDTO=new UserDTO();
-                    userDTO.setName(e.getAlias());
+                    userDTO.setUserDTO(e.getAlias());
+                    userDTO.setUserDTOId(e.getUserId());
                     return userDTO;
                 }).collect(Collectors.toList());
         return userDTOs;
@@ -40,7 +42,8 @@ public class UserService {
     public UserDTO getUserById(long id){
         User user = userRepository.findUserByUserId(id);
         UserDTO userDTO=new UserDTO();
-        userDTO.setName(user.getAlias());
+        userDTO.setUserDTO(user.getAlias());
+        userDTO.setUserDTOId(user.getUserId());
         return userDTO;
     }
 

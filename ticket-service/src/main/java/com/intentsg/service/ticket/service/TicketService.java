@@ -37,6 +37,10 @@ public class TicketService {
                 .collect(Collectors.toList());
     }
 
+    public void deleteById(Long id) {
+        ticketRepository.deleteById(id);
+    }
+
     private TicketDTO replaceToTicketDTO(Ticket ticket){
         TicketDTO ticketDTO = new TicketDTO();
         ticketDTO.setDescription(ticket.getDescription());

@@ -23,7 +23,6 @@ public class TicketController {
 	private TicketService ticketService;
 
 	@GetMapping("/findAll")
-	@ApiOperation(value = "findAll", response = TicketDTO.class)
 	@ApiImplicitParams({
 			@ApiImplicitParam(name = "page", dataType = "integer", paramType = "query",
 					value = "Results page you want to retrieve (0..N)", defaultValue = "0"),
@@ -37,20 +36,23 @@ public class TicketController {
 	}
 
 	@GetMapping("/{id}")
-	@ApiOperation(value = "findById", response = TicketDTO.class)
 	public TicketDTO findById(@PathVariable Long id){
 		return ticketService.findById(id);
 	}
 
 	@GetMapping("/getByString")
-	@ApiOperation(value = "getByString", response = TicketDTO.class)
 	public List<TicketDTO> getByString(@RequestParam String text){
 		return ticketService.findByAllField(text);
 	}
 
 	@PostMapping("/saveTicket")
-	@ApiOperation(value = "saveTicket")
 	public void saveTicket(@RequestBody Ticket ticket){
 		ticketService.saveTicket(ticket);
 	}
+
+	@DeleteMapping("/delete/{id}")
+	public void deleteById(@PathVariable Long id){
+		ticketService.deleteById(id);
+	}
+
 }

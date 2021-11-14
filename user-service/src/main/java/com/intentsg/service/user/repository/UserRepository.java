@@ -12,10 +12,6 @@ import java.util.List;
 @Repository
 public interface UserRepository extends JpaRepository<User, Long> {
     List<User> findByLastName(String name) ;
-    User findUserByUserId(long id) ;
-
-    @Transactional
-    void deleteByUserId(long id);
 
     @Modifying
     @Query(value="update students_ll5.users set first_name= :firstName,last_name= :lastName, alias=:alias  where user_id =:id", nativeQuery=true)

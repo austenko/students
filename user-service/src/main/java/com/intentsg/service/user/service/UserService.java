@@ -3,6 +3,7 @@ package com.intentsg.service.user.service;
 import com.intentsg.model.User;
 import com.intentsg.service.user.dto.UserDTO;
 import com.intentsg.service.user.repository.UserRepository;
+import javassist.NotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
@@ -40,8 +41,8 @@ public class UserService {
         return userDTOs;
     }
 
-    public UserDTO getUserById(long id){
-        User user = userRepository.findUserByUserId(id);
+    public UserDTO getUserById(long id) throws NotFoundException {
+        User user = userRepository.findById(id).orElseThrow(() -> new NotFoundException("no user found with entered id"));
         UserDTO userDTO=new UserDTO();
         userDTO.setUserDTO(user.getAlias());
         userDTO.setUserDTOId(user.getUserId());
@@ -64,8 +65,8 @@ public class UserService {
     }
 
     @Transactional
-    public void updateUserAnyFieldByIdByRepositoryInBoxMethod(User userSourse){
-        User userOrigin = userRepository.findUserByUserId(userSourse.getUserId());
+    public void updateUserAnyFieldByIdByRepositoryInBoxMethod(User userSourse) throws NotFoundException {
+        User userOrigin = userRepository.findById(userSourse.getUserId()).orElseThrow(() -> new NotFoundException("can't update, no user found with entered id"));
 
         userOrigin= autoCompleteFields(userSourse,userOrigin);
 
@@ -74,8 +75,8 @@ public class UserService {
 
 
     @Transactional
-    public void updateUserAnyFieldByIdByNativeQuery(User userSourse){
-        User userOrigin = userRepository.findUserByUserId(userSourse.getUserId());
+    public void updateUserAnyFieldByIdByNativeQuery(User userSourse) throws NotFoundException {
+        User userOrigin = userRepository.findById(userSourse.getUserId()).orElseThrow(() -> new NotFoundException("can't update, no user found with entered id"));
         long id= userSourse.getUserId();
 
         userOrigin= autoCompleteFields(userSourse,userOrigin);
@@ -89,7 +90,7 @@ public class UserService {
     }
 
     public void deleteUsrById(long id){
-        userRepository.deleteByUserId(id);
+        userRepository.deleteById(id);
 
     }
 }

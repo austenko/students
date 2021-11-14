@@ -6,6 +6,7 @@ import com.intentsg.service.user.dto.UserDTO;
 import com.intentsg.service.user.repository.UserRepository;
 import com.intentsg.service.user.service.UserService;
 import io.swagger.v3.oas.annotations.parameters.RequestBody;
+import javassist.NotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
@@ -44,7 +45,7 @@ public class TestController {
 	}
 
 	@RequestMapping(value="/user/{id}",method = RequestMethod.GET)
-	public ResponseEntity <Object> getUserById(@PathVariable("id") long id)	{
+	public ResponseEntity <Object> getUserByIdOrThrowsNotFoundException(@PathVariable("id") long id) throws NotFoundException {
 		UserDTO userDTO =userService.getUserById(id);
 		return new ResponseEntity<>(userDTO, HttpStatus.OK);
 	}
@@ -62,7 +63,7 @@ public class TestController {
 	}
 
 	@PutMapping("/user")
-	public ResponseEntity updateUserAnyFieldById(@RequestBody User user)	{
+	public ResponseEntity updateUserAnyFieldByIdOrThrowsNotFoundException(@RequestBody User user) throws NotFoundException {
 		userService.updateUserAnyFieldByIdByRepositoryInBoxMethod(user);
 		return new ResponseEntity<>("User with id = " + user.getUserId() + " successfully updated", HttpStatus.OK);
 	}

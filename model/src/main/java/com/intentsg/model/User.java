@@ -1,11 +1,7 @@
 package com.intentsg.model;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name = "USERS")
@@ -18,6 +14,9 @@ public class User {
 
     @Column(name = "FIRST_NAME", nullable = false)
     private String firstName;
+
+    @OneToMany(mappedBy = "userRelation")
+    private List<Ticket> ticketList;
 
     public Long getUserId() {
         return userId;

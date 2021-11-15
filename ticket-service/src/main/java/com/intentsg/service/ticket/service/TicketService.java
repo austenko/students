@@ -54,4 +54,19 @@ public class TicketService {
                 .map(this::toTicketDTO)
                 .collect(Collectors.toList());
     }
+
+    public List<TicketDTO> getByYear(String creationYear) {
+        return ticketRepository.findByYear(creationYear).stream()
+                .map(this::toTicketDTO)
+                .collect(Collectors.toList());
+    }
+
+    public void deleteById(Long id) {
+        ticketRepository.deleteById(id);
+    }
+
+    public void saveTicket(Ticket ticket) {
+        ticketRepository.save(ticket);
+    }
+
 }

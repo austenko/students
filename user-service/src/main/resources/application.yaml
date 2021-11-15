@@ -6,12 +6,12 @@ spring:
     name: user-service
   datasource:
     username: root
-    password: root
+    password: RootRoot
     url: jdbc:mysql://localhost:3306/students_ll5?characterEncoding=utf8&createDatabaseIfNotExist=true
   jpa:
     hibernate:
       ddl-auto: update
-    show-sql: false
+    show-sql: true
 
 eureka:
   instance:

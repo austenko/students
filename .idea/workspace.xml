@@ -4,11 +4,19 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="023781b9-4f40-4fae-9d64-faae219dd09d" name="Changes" comment="FirstTask">
+    <list default="true" id="023781b9-4f40-4fae-9d64-faae219dd09d" name="Changes" comment="Service">
+      <change afterPath="$PROJECT_DIR$/user-service/src/main/java/com/intentsg/service/user/config/SpringFoxConf.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/user-service/src/main/java/com/intentsg/service/user/repository/UserRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/user-service/src/main/java/com/intentsg/service/user/repository/UserRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/discovery-service/discovery-service.iml" beforeDir="false" afterPath="$PROJECT_DIR$/discovery-service/discovery-service.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/edge-service/edge-service.iml" beforeDir="false" afterPath="$PROJECT_DIR$/edge-service/edge-service.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/model/model.iml" beforeDir="false" afterPath="$PROJECT_DIR$/model/model.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pridumayte-chtoto.iml" beforeDir="false" afterPath="$PROJECT_DIR$/pridumayte-chtoto.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ticket-service/ticket-service.iml" beforeDir="false" afterPath="$PROJECT_DIR$/ticket-service/ticket-service.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/user-service/src/main/java/com/intentsg/service/user/controller/TestController.java" beforeDir="false" afterPath="$PROJECT_DIR$/user-service/src/main/java/com/intentsg/service/user/controller/TestController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/user-service/src/main/java/com/intentsg/service/user/service/ServiceClass.java" beforeDir="false" afterPath="$PROJECT_DIR$/user-service/src/main/java/com/intentsg/service/user/service/ServiceClass.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/user-service/src/main/java/com/intentsg/service/user/userdto/UserDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/user-service/src/main/java/com/intentsg/service/user/userdto/UserDto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/user-service/target/classes/com/intentsg/service/user/controller/TestController.class" beforeDir="false" afterPath="$PROJECT_DIR$/user-service/target/classes/com/intentsg/service/user/controller/TestController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/user-service/user-service.iml" beforeDir="false" afterPath="$PROJECT_DIR$/user-service/user-service.iml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -126,7 +134,7 @@
       <workItem from="1636582806316" duration="178000" />
       <workItem from="1636583160792" duration="234000" />
       <workItem from="1636583416378" duration="1198000" />
-      <workItem from="1637002474765" duration="5245000" />
+      <workItem from="1637002474765" duration="8965000" />
     </task>
     <task id="LOCAL-00001" summary="Initial commit">
       <created>1636580809803</created>
@@ -149,7 +157,14 @@
       <option name="project" value="LOCAL" />
       <updated>1637006998664</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Service">
+      <created>1637011605137</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1637011605137</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -171,6 +186,7 @@
     <MESSAGE value="Initial commit" />
     <MESSAGE value="added Db" />
     <MESSAGE value="FirstTask" />
-    <option name="LAST_COMMIT_MESSAGE" value="FirstTask" />
+    <MESSAGE value="Service" />
+    <option name="LAST_COMMIT_MESSAGE" value="Service" />
   </component>
 </project>

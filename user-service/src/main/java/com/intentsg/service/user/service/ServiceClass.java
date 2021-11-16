@@ -1,5 +1,6 @@
 package com.intentsg.service.user.service;
 
+import com.intentsg.model.User;
 import com.intentsg.service.user.repository.UserRepository;
 import com.intentsg.service.user.userdto.UserDto;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,6 +26,11 @@ public class ServiceClass {
                 }).collect(Collectors.toList());
         return list;
     }
+
+    public void save(User user){
+        userRepository.save(user);
+    }
+
     public List<UserDto> getUsersByByUserId(Long userIdDto){
         List<UserDto> dtoList=userRepository.getUserByUserId(userIdDto).stream()
                 .map(e->{

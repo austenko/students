@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -57,9 +58,11 @@ public class TestController {
 	}
 
 	@RequestMapping(value="/user/{id}",method = RequestMethod.DELETE)
-	public ResponseEntity <Object> deleteUserById(@PathVariable("id") long id)	{
-		userService.deleteUsrById(id);
-		return new ResponseEntity<>("User with id= " + id + " successfully deleted", HttpStatus.OK);
+	public ResponseEntity <Object> deleteUserById(@PathVariable("id") long id) throws NotFoundException {
+		UserDTO userDTO = userService.deleteUsrById(id);
+		HttpHeaders headers = new HttpHeaders();
+		headers.add("Custom-Header", "User with id = " + id + " successfully deleted");
+		return new ResponseEntity<>(userDTO, headers, HttpStatus.OK);
 	}
 
 	@PutMapping("/user")
@@ -67,4 +70,6 @@ public class TestController {
 		userService.updateUserAnyFieldByIdByRepositoryInBoxMethod(user);
 		return new ResponseEntity<>("User with id = " + user.getUserId() + " successfully updated", HttpStatus.OK);
 	}
+
+
 }

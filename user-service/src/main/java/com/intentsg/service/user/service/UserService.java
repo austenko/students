@@ -89,8 +89,10 @@ public class UserService {
 
     }
 
-    public void deleteUsrById(long id){
+    public UserDTO deleteUsrById(long id) throws NotFoundException {
+        UserDTO userDTOforShowDeletedUser = getUserById(id);
         userRepository.deleteById(id);
+        return  userDTOforShowDeletedUser;
 
     }
 }

@@ -1,17 +1,15 @@
 package com.intentsg.service.user.controller;
 
-import com.intentsg.model.User;
 import com.intentsg.service.user.service.ServiceClass;
 import com.intentsg.service.user.userdto.UserDto;
-import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.PageRequest;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 
-import java.awt.print.Pageable;
 import java.util.List;
 
 
@@ -31,34 +29,18 @@ public class TestController {
 	public ResponseEntity <List<UserDto>>list() {
 		return ResponseEntity.ok(serviceClass.findAllUsers());
 	}
-//	@GetMapping("/getById")
-//	public ResponseEntity <List<UserDto>>getById() {
-//		return ResponseEntity.ok(serviceClass.getUsersByByUserId(1l));
-//	}
-@GetMapping("/find")
-public ResponseEntity <List<UserDto>>find() {
-	return ResponseEntity.ok(serviceClass.findAllByFirstName("Lisa"));
-}
 
 
-//	@GetMapping("/list")
-//	public ResponseEntity<List<UserDTO>> list()	{
-//		Pageable sortedUserByAlias = PageRequest.of(0, 10);
-//		return ResponseEntity.ok(serviceClass.getAllUserList(sortedUserByAlias));
-//	}
+@RequestMapping(value="/find/{firstName}",method = RequestMethod.GET)
+	public ResponseEntity<List<UserDto>>getByFirstName(@PathVariable("firstName") String firstName) {
+		return ResponseEntity.ok(serviceClass.findAllByFirstName(firstName)) ;
+	}
 
 
-//	@GetMapping("/allUsers")
-//		@ApiOperation(value = " List of Users ", response = UserDto.class, tags = "findAll");
-//		public List<UserDto> findAll() {
-//			return serviceClass.findAllUsers();
-//		}
+
+
 
 
 
 }
-//	@GetMapping("/test")
-//	public ResponseEntity test() {
-//		return ResponseEntity.ok("user-service");
-//	}
-//}
+

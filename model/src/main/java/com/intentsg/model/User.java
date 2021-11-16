@@ -22,6 +22,8 @@ public class User {
     private String firstName;
     @Column(name = "Last_NAME", nullable = false)
     private String lastName;
+    @Column(name = "Phone_Number", nullable = false)
+    private String phoneNumber;
 
 
 }

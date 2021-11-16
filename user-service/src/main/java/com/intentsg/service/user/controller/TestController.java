@@ -62,7 +62,7 @@ public class TestController {
 		UserDTO userDTO = userService.deleteUsrById(id);
 		HttpHeaders headers = new HttpHeaders();
 		headers.add("Custom-Header", "User with id = " + id + " successfully deleted");
-		return new ResponseEntity<>(userDTO, headers, HttpStatus.OK);
+		return new ResponseEntity<>(userDTO, headers , HttpStatus.OK);
 	}
 
 	@PutMapping("/user")

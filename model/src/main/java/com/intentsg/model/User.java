@@ -1,11 +1,9 @@
 package com.intentsg.model;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import org.springframework.beans.factory.annotation.Autowired;
+
+import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name = "USERS")
@@ -18,6 +16,15 @@ public class User {
 
     @Column(name = "FIRST_NAME", nullable = false)
     private String firstName;
+
+    @Column(name = "LAST_NAME", nullable = false)
+    private String lastName;
+
+    @Column(name = "ALIAS", nullable = false)
+    private String alias;
+
+    @OneToMany
+    private List<Ticket> ticketList;
 
     public Long getUserId() {
         return userId;
@@ -34,4 +41,22 @@ public class User {
     public void setFirstName(String firstName) {
         this.firstName = firstName;
     }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
+
+    public String getAlias() {
+        return alias;
+    }
+
+    public void setAlias(String alias) {
+        this.alias = alias;
+    }
+
+
 }
